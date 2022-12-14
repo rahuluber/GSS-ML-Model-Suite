@@ -1,0 +1,13 @@
+streamlit==1.10
+transformers
+sentencepiece
+stqdm
+sentence_transformers
+joblib
+scikit-learn==0.24
+imbalanced-learn
+deep_translator
+openpyxl
+wordninja
+unidecode
+nltk

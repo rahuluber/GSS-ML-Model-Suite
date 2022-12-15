@@ -1,34 +1,8 @@
-from transformers import pipeline
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import numpy as np
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from scipy.special import softmax
 import json
-from sklearn.metrics.pairwise import cosine_similarity
-from sentence_transformers import SentenceTransformer
-from langdetect import detect
-
-def lang_detection(text):
-    return detect(text)
-
-class SentenceSimilarity():
-    def __init__(self):
-        self.model = SentenceTransformer('sentence-transformers/paraphrase-xlm-r-multilingual-v1')
-        
-    def run(self, sentence1, sentence2):
-        embeddings1 = self.model.encode([sentence1, sentence2])
-        output = cosine_similarity(embeddings1, embeddings1)[0,1]
-        return output
-
-class AbstractiveSummary():
-    def __init__(self, max_length=130,min_length=30):
-        self.summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
-        self.max_length = max_length
-        self.min_length = min_length
-        
-    def run(self, text):
-        output = self.summarizer(text, max_length=self.max_length, min_length=self.min_length, do_sample=False)
-        return output
 
 class SentimentAnalyser():
     

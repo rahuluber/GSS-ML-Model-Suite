@@ -1,7 +1,5 @@
 from transformers import DetrFeatureExtractor, DetrForObjectDetection
 import torch
-from utils.GSS_visualization import *
-import matplotlib.pyplot as plt
 import json
 import pandas as pd
 

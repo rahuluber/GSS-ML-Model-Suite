@@ -7,7 +7,7 @@ Image enhancement module can be used for do the following moddification in a giv
 2. Add the borders
 3. 
 #### Object Detection
-Object Detection module is used to detect any object in a given image. An object detection model identifies the object (what the object is ? Is it a dog or a cat?) and also locates the object in the image. It will give a bounding box around the object of interest. 
+Object Detection module is used to detect any object in a given image. An object detection model identifies the object (what the object is ? Is it a dog or a cat?) and also locates the object in the image. It will give a bounding box around the object of interest. <Add an example image>
 ## NLP Use Cases
 #### Text Similarity
 #### Text Classification

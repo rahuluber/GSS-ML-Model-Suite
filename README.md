@@ -1,5 +1,5 @@
 # GSS-ML-Model-Suite
-GSS MLOps ML Model Suite is a central repository of re-usable, pre-trained ml models. The code base can be easily used to experiment around different use bussines use cases with minimal effort of developing & training a model. This repository can be used for different computer vision (image data) and nlp (text data) use cases which are listed below:
+GSS MLOps ML Model Suite is a central repository of re-usable, pre-trained ml models. The code base can be easily used to experiment around different bussines use cases with minimal effort of developing & training the model. This repository can be used for different computer vision (image data) and nlp (text data) use cases which are listed below:
 ## Computer Vision Use Cases
 #### Image Enhancement
 Image enhancement module can be used for do the following moddification in a given image: 

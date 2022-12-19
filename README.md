@@ -24,10 +24,3 @@ Text similarity calcualtes the similarity score between two given phrases (text)
 Sentiment Analysis module analyses the sentiment of the given phrase. The phrase can be a review, a feedback, a comment etc, this module will analyse the overall sentiment of the phrase and tell you whether the sentiment is positive, negitive or neutral. 
 #### 5. Text Classification
 Text classification model classifies the a given text data (sentence/phrase) into defined classes. WIP
-
-# Installation
-```
-pip install torch==1.10.1+cu102 torchvision==0.11.2+cu102 torchaudio==0.10.1 -f https://download.pytorch.org/whl/cu102/torch_stable.html
-pip install requirement.txt
-```
-

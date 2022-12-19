@@ -18,8 +18,9 @@ Text summarisation module
 #### Text Similarity
 Text similarity calcualtes the similarity score between two given phrases (text). This module uses bert based nlp model generate the vector and then uses cosine similarity to calculate the similarity scores.  
 #### Sentiment Analysis
+Sentiment Analysis module 
 #### Text Classification
-Text classification 
+Text classification model classifies the a given text data (sentence/phrase) into defined classes. WIP
 
 # Installation
 ```

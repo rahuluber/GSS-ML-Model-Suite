@@ -19,7 +19,7 @@ Text summarisation module outputs the summary of the input paragraph. This modul
 #### 2. Language Detection
  Language detection module detects the major language of your text data. It uses python library to detect the language. This module can be helpful if user wants to filter out the other language or wants to segregate the data based on their language.
 #### 3. Text Similarity
-Text similarity calcualtes the similarity score between two given phrases (text). This module uses bert based nlp model generate the vector and then uses cosine similarity to calculate the similarity scores. This module helps the user to identify similar products based on their description, recommened relevant items/products etc. 
+Text similarity calcualtes the similarity score between two given phrases (text). This module uses bert based nlp model to generate the vector and then uses cosine similarity to calculate the similarity scores. This module helps the user to identify similar products based on their description, recommened relevant items/products etc. 
 #### 4. Sentiment Analysis
 Sentiment Analysis module analyses the sentiment of the given phrase. The phrase can be a review, a feedback, a comment etc, this module will analyse the overall sentiment of the phrase and tell you whether the sentiment is positive, negitive or neutral. 
 #### 5. Text Classification

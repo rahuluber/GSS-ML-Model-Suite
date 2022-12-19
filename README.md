@@ -6,12 +6,16 @@ Image enhancement module can be used for do the following moddification in a giv
 1. Resize the image
 2. Add the borders
 3. 
+#### Image Similarity
+The image similarity module calculates the similarity between given two images. It gives the similarity score between two images. It is based on CNN (convolutional Neural Networks) to extract the feature and then cosine similarity to calculate the similarity between the images.
+
 #### Object Detection
 Object Detection module is used to detect any object in a given image. An object detection model identifies the object (what the object is ? Is it a dog or a cat?) and also locates the object in the image. It will give a bounding box around the object of interest. <Add an example image>
 ## NLP Use Cases
 #### Text Similarity
+Text similarity calcualtes the similarity score between two given phrases (text). This module uses bert based nlp model generate the vector and then uses cosine similarity to calculate the similarity scores.  
 #### Text Classification
-
+Text classification 
 
 # Installation
 ```

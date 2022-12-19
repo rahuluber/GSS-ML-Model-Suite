@@ -7,8 +7,7 @@ GSS MLOps ML Model Suite is a central repository of re-usable, pre-trained ml mo
 #### Image Enhancement
 Image enhancement module can be used for do the following moddification in a given image: 
 1. Resize the image
-2. Add the borders
-3. 
+2. Add the borders 
 #### Image Similarity
 The image similarity module calculates the similarity between given two images. It gives the similarity score between two images. It is based on CNN (convolutional Neural Networks) to extract the feature and then cosine similarity to calculate the similarity between the images.
 

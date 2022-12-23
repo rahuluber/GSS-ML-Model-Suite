@@ -4,3 +4,6 @@ Text similarity calcualtes the similarity score between two given phrases (text)
 ### Model Details
 
 ### Example
+sent1 = "Mark has good grip on coding"
+sent2 = "Mark loves coding"
+Similarity Score = 0.69

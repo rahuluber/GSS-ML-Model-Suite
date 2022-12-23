@@ -70,7 +70,7 @@ class track_video():
             ret, frame = vid.read()
             if not ret:
                 break
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+#             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             pilimg = Image.fromarray(frame)
             detections = self.detect_image(pilimg)
 

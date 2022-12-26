@@ -10,6 +10,7 @@ from tqdm import tqdm
 from utils.sort import *
 from utils.model import *
 from utils.utils import *
+import pandas as pd
 
 # Step to download pre-train model
 # import wget
@@ -52,13 +53,13 @@ class track_video():
         return detections[0]      
         
         
-    def run(self, videopath, save_path,sort_max_age=5,sort_min_hits=2,thicknss=2,frame_cons=1000):
+    def run(self, videopath, save_path, sort_max_age=5,sort_min_hits=2,thicknss=2,frame_cons=1000):
         cmap = plt.get_cmap('tab20b')
         colors = [cmap(i)[:3] for i in np.linspace(0, 1, 20)]
         vid = cv2.VideoCapture(videopath)
         
         mot_tracker = Sort(sort_max_age,sort_min_hits) 
-        
+        log_df = pd.DataFrame()
         fps = vid.get(cv2.CAP_PROP_FPS)
         w = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH))
         h = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -73,12 +74,19 @@ class track_video():
 #             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             pilimg = Image.fromarray(frame)
             detections = self.detect_image(pilimg)
-
+        
             img = np.array(pilimg)
             pad_x = max(img.shape[0] - img.shape[1], 0) * (self.img_size / max(img.shape))
             pad_y = max(img.shape[1] - img.shape[0], 0) * (self.img_size / max(img.shape))
             unpad_h = self.img_size - pad_y
             unpad_w = self.img_size - pad_x
+            x1_lst=[]
+            x2_lst=[]
+            y1_lst=[]
+            y2_lst=[]
+            obj_lst=[]
+            cls_lst=[]
+            
             if detections is not None:
                 tracked_objects = mot_tracker.update(detections.cpu())
 
@@ -89,14 +97,21 @@ class track_video():
                     box_w = int(((x2 - x1) / unpad_w) * img.shape[1])
                     y1 = int(((y1 - pad_y // 2) / unpad_h) * img.shape[0])
                     x1 = int(((x1 - pad_x // 2) / unpad_w) * img.shape[1])
-
                     color = colors[int(obj_id) % len(colors)]
                     color = [i * 255 for i in color]
                     cls = self.classes[int(cls_pred)]
+                    x1_lst.append(x1)
+                    x2_lst.append(int(x2))
+                    y1_lst.append(y1)
+                    y2_lst.append(int(y2))
+                    obj_lst.append(int(obj_id))
+                    cls_lst.append(cls)
                     cv2.rectangle(frame, (x1, y1), (x1+box_w, y1+box_h), color, thicknss)
         #             cv2.rectangle(frame, (x1, y1-20), (x1+len(cls)*19+60, y1), color, -1)
                     cv2.putText(frame, cls + "-" + str(int(obj_id)), (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), thicknss)
-
+            
             vid_writer.write(frame)
+            log_df = log_df.append({'Frame':ii,'X1':x1_lst,'X2':x2_lst,'Y1':y1_lst,'Y2':y2_lst,'OBJ_ID':obj_lst,'Class':cls_lst},ignore_index=True)
         vid_writer.release()
         print('Video tracking result has been saved successfully at {}'.format(save_path))
+        return log_df

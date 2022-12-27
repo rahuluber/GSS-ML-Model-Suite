@@ -101,9 +101,9 @@ class track_video():
                     color = [i * 255 for i in color]
                     cls = self.classes[int(cls_pred)]
                     x1_lst.append(x1)
-                    x2_lst.append(int(x2))
+                    x2_lst.append(int(x1+box_w))
                     y1_lst.append(y1)
-                    y2_lst.append(int(y2))
+                    y2_lst.append(int(y1+box_h))
                     obj_lst.append(int(obj_id))
                     cls_lst.append(cls)
                     cv2.rectangle(frame, (x1, y1), (x1+box_w, y1+box_h), color, thicknss)
@@ -114,4 +114,4 @@ class track_video():
             log_df = log_df.append({'Frame':ii,'X1':x1_lst,'X2':x2_lst,'Y1':y1_lst,'Y2':y2_lst,'OBJ_ID':obj_lst,'Class':cls_lst},ignore_index=True)
         vid_writer.release()
         print('Video tracking result has been saved successfully at {}'.format(save_path))
-        return log_df
+        return log_df, fps

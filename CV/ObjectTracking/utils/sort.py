@@ -95,6 +95,9 @@ class KalmanBoxTracker(object):
         self.hit_streak = 0
         self.age = 0
         self.objclass = bbox[6]
+        
+    def reset():
+        KalmanBoxTracker.count = 0
 
     def update(self,bbox):
         """
@@ -177,6 +180,7 @@ class Sort(object):
         self.min_hits = min_hits
         self.trackers = []
         self.frame_count = 0
+        KalmanBoxTracker.reset()
 
     def update(self,dets):
         """
@@ -198,6 +202,7 @@ class Sort(object):
             if(np.any(np.isnan(pos))):
                 to_del.append(t)
         trks = np.ma.compress_rows(np.ma.masked_invalid(trks))
+#         print(self.trackers)
         for t in reversed(to_del):
             self.trackers.pop(t)
         matched, unmatched_dets, unmatched_trks = associate_detections_to_trackers(dets,trks)
@@ -290,4 +295,5 @@ if __name__ == '__main__':
     if(display):
         print("Note: to get real runtime results run without the option: --display")
   
+
 
